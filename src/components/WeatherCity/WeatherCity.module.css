@@ -1,0 +1,72 @@
+.Container {
+    --container-radius: 25px;
+
+    background: linear-gradient(5deg, rgba(203,229,255,1) 0%, rgba(106,194,251,1) 100%);
+    margin-left: 50px;
+    border-radius: var(--container-radius);
+    min-height: 400px;
+    position: relative;
+}
+
+.Temperature {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Text {
+    position: absolute;
+    z-index: 10;
+    top: 17%;
+    left: 115px;
+    padding-right: 15px;
+}
+
+.City {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.Date {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.Weather {
+    font-size: 21px;
+    font-weight: 300;
+}
+
+.ImageContainer {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--container-radius);
+}
+
+@media screen and (max-width: 600px) {
+    .Text {
+        left: 85px;
+    }
+
+    .ImageContainer {
+        height: 65%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Text {
+        left: 85px;
+    }
+
+    .ImageContainer {
+        height: 50%;
+    }
+}
