@@ -1,0 +1,49 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "indent": ["error", 4, {
+      "SwitchCase": 1,
+      "ignoredNodes": ["JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXFragment", "JSXOpeningFragment", "JSXClosingFragment", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"]
+    }],
+    "no-new": "off",
+    "arrow-parens": "off",
+    "object-curly-newline": "off",
+    "max-len": "off",
+    "no-plusplus": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-indent": [2, 4, {"checkAttributes": true, "indentLogicalExpressions": true}],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-props-no-spreading": 0,
+    "react/forbid-prop-types": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "react/destructuring-assignment": 0,
+    "react/state-in-constructor": 0,
+    "react/jsx-one-expression-per-line": 0
+  }
+}
