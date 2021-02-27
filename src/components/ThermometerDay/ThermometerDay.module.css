@@ -1,0 +1,17 @@
+.Container {
+    margin: 10px 10px 10px 0;
+}
+
+.Title {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.Card {
+    box-shadow: var(--component-shadow);
+    background: linear-gradient(0deg, rgba(96,189,236,1) 0%, rgba(111,171,242,1) 100%);
+    border-radius: var(--component-radius);
+    height: 400px;
+}

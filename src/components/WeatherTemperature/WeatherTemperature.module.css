@@ -6,8 +6,8 @@
     background: linear-gradient(0deg, rgba(96,189,236,1) 0%, rgba(111,171,242,1) 100%);
     width: 130px;
     padding: 20px 10px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
+    border-bottom-right-radius: var(--component-radius);
+    border-top-right-radius: var(--component-radius);
     color: #FFF;
     box-shadow: var(--component-shadow);
 }

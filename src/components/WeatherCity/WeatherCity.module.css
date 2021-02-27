@@ -1,9 +1,7 @@
 .Container {
-    --container-radius: 25px;
-
     background: linear-gradient(5deg, rgba(203,229,255,1) 0%, rgba(106,194,251,1) 100%);
-    margin: 10px 0 10px 50px;
-    border-radius: var(--container-radius);
+    margin: 10px 0;
+    border-radius: var(--component-radius);
     min-height: 400px;
     position: relative;
     box-shadow: var(--component-shadow);
@@ -49,7 +47,7 @@
     right: 0;
     height: 100%;
     overflow: hidden;
-    border-radius: var(--container-radius);
+    border-radius: var(--component-radius);
 }
 
 @media screen and (max-width: 600px) {

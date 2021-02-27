@@ -1,3 +1,9 @@
 .Container {
     margin: 30px 0;
 }
+
+.RowMarginLeftOverride {
+    /* align weather temperature absolute temperature to the border and
+        all other app components to weather city */
+    margin-left: 35px!important;
+}

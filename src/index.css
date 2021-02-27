@@ -2,6 +2,7 @@
 
 html {
   --component-shadow: 8px 10px 25px -9px rgba(0,0,0,0.35);
+  --component-radius: 25px;
 }
 
 body {
