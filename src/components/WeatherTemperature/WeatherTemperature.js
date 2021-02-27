@@ -6,12 +6,13 @@ import classes from './WeatherTemperature.module.css';
 const weatherTemperature = ({ weekday, degrees, icon }) => {
     const degreesClasses = [classes.Degrees];
     if (weekday) degreesClasses.push(classes.DegreesSmall);
+    const intDegrees = Math.round(degrees);
     return (
         <div className={classes.Container}>
             {weekday ? (
                 <div className={classes.Weekday}>{weekday}</div>
             ) : null}
-            <div className={degreesClasses.join(' ')}>{degrees}&deg;</div>
+            <div className={degreesClasses.join(' ')}>{intDegrees}&deg;</div>
             <WeatherIcon name={icon} className={classes.Icon} />
         </div>
     );
