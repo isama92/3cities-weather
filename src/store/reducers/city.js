@@ -1,32 +1,39 @@
-import { getCities, setCities } from 'shared/helpers/storage';
+import { setCities } from 'shared/helpers/storage';
 import * as actionTypes from '../actionTypes';
 
-const storageCities = getCities();
-
 const initialState = {
-    cities: storageCities,
-    active: storageCities[0] || null,
+    cities: [],
+    active: null,
     geolocation: null,
 };
 
+const saveCitiesToStorage = (cities) => {
+    const storageCities = cities.map((city) => city.city);
+    // TODO: remove console.log
+    // eslint-disable-next-line no-console
+    console.log('city names for storage:', storageCities);
+    setCities(storageCities);
+};
+
+const bootstrap = (state, action) => ({ ...state, cities: action.cities, active: action.cities[0] || null });
+
 const addCity = (state, action) => {
     const cities = [...state.cities];
-    const city = action.city.trim().toLowerCase();
+    const { city } = action;
 
     // remove all elements except the latest 2
     if (cities.length >= 3) cities.splice(0, cities.length - 2);
 
-    cities.push(city.toLowerCase());
-    setCities(cities);
+    cities.push(city);
+    saveCitiesToStorage(cities);
     return { ...state, cities };
 };
 
 const removeCity = (state, action) => {
     const cities = [...state.cities];
-    const city = action.city.trim().toLowerCase();
-    const cityIndex = cities.indexOf(city);
+    const { cityIndex } = action;
     cities.splice(1, cityIndex);
-    setCities(cities);
+    saveCitiesToStorage(cities);
     return { ...state, cities };
 };
 
@@ -40,6 +47,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         default:
             return state;
+        case actionTypes.BOOTSTRAP:
+            return bootstrap(state, action);
         case actionTypes.ADD_CITY:
             return addCity(state, action);
         case actionTypes.REMOVE_CITY:

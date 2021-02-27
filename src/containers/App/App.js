@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import * as actions from 'store/actions';
 import WeatherCity from 'components/WeatherCity/WeatherCity';
 import ThermometerDay from 'components/ThermometerDay/ThermometerDay';
 import classes from './App.module.css';
 
 const app = () => {
-    const data = {
-        city: 'Turin',
-        date: 'Friday 18, September',
-        weatherName: 'Sunny',
-        weatherDegrees: 22,
-        weatherIcon: '01d',
-    };
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(actions.bootstrap());
+    }, []);
 
     return (
         <Container fluid className={classes.Container}>
@@ -19,13 +19,7 @@ const app = () => {
                 <Col xs={12} md={8}>
                     <Row>
                         <Col>
-                            <WeatherCity
-                              city={data.city}
-                              date={data.date}
-                              weatherName={data.weatherName}
-                              weatherDegrees={data.weatherDegrees}
-                              weatherIcon={data.weatherIcon}
-                            />
+                            <WeatherCity />
                         </Col>
                     </Row>
                     <Row>

@@ -31,7 +31,6 @@
       "ignoredNodes": ["JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXFragment", "JSXOpeningFragment", "JSXClosingFragment", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"]
     }],
     "no-new": "off",
-    "arrow-parens": "off",
     "object-curly-newline": "off",
     "max-len": "off",
     "no-plusplus": "off",

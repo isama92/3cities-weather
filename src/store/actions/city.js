@@ -1,20 +1,47 @@
+import { getCities } from 'shared/helpers/storage';
+import { getWeatherByCity } from 'shared/api/api';
 import * as actionTypes from '../actionTypes';
 
-export const addCity = (city) => (dispatch) => {
-    dispatch({
-        type: actionTypes.ADD_CITY,
-        city,
-    });
+export const bootstrap = () => (dispatch) => {
+    const promises = getCities().map((city) => getWeatherByCity(city));
+    Promise.all(promises)
+        .then((cities) => {
+            dispatch({
+                type: actionTypes.BOOTSTRAP,
+                cities,
+            });
+        });
 };
 
-export const removeCity = (city) => (dispatch) => {
+export const addCity = (city) => (dispatch) => {
+    getWeatherByCity(city)
+        .then((res) => {
+            dispatch({
+                type: actionTypes.ADD_CITY,
+                city: res,
+            });
+        });
+};
+
+export const removeCity = (cityIndex) => (dispatch) => {
     dispatch({
         type: actionTypes.REMOVE_CITY,
-        city,
+        cityIndex,
     });
 };
 
-export const setActiveCity = (city) => (dispatch) => {
+export const setActiveByCityName = (city) => (dispatch) => {
+    getWeatherByCity(city)
+        .then((res) => {
+            dispatch({
+                type: actionTypes.SET_ACTIVE,
+                city: res,
+            });
+        });
+};
+
+export const setActiveByCityIndex = (cityIndex) => (dispatch, getState) => {
+    const city = getState().city.cities[cityIndex] || null;
     dispatch({
         type: actionTypes.SET_ACTIVE,
         city,

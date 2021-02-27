@@ -1,6 +1,6 @@
 const citiesKey = 'cities';
 
-const defaultCities = ['rome', 'london'];
+const defaultCities = ['rome'];
 
 export const getCities = () => {
     const json = localStorage.getItem(citiesKey);
