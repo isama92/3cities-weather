@@ -9,6 +9,7 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     color: #FFF;
+    box-shadow: var(--component-shadow);
 }
 
 .Weekday {

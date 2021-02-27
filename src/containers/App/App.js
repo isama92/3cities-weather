@@ -16,13 +16,21 @@ const app = () => {
         <Container fluid className={classes.Container}>
             <Row>
                 <Col xs={12} md={8}>
-                    <WeatherCity
-                      city={data.city}
-                      date={data.date}
-                      weatherName={data.weatherName}
-                      weatherDegrees={data.weatherDegrees}
-                      weatherIcon={data.weatherIcon}
-                    />
+                    <Row>
+                        <Col>
+                            <WeatherCity
+                              city={data.city}
+                              date={data.date}
+                              weatherName={data.weatherName}
+                              weatherDegrees={data.weatherDegrees}
+                              weatherIcon={data.weatherIcon}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={8}>1</Col>
+                        <Col xs={4}>2</Col>
+                    </Row>
                 </Col>
                 <Col xs={12} md={2}>
                     side

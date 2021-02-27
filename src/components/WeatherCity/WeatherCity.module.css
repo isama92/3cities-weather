@@ -2,10 +2,11 @@
     --container-radius: 25px;
 
     background: linear-gradient(5deg, rgba(203,229,255,1) 0%, rgba(106,194,251,1) 100%);
-    margin-left: 50px;
+    margin: 10px 0 10px 50px;
     border-radius: var(--container-radius);
     min-height: 400px;
     position: relative;
+    box-shadow: var(--component-shadow);
 }
 
 .Temperature {
