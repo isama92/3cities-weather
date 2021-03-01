@@ -31,6 +31,10 @@
     color: #FFF;
 }
 
+.City:not(:last-child) {
+    margin-bottom: 30px;
+}
+
 .CityName {
     font-size: 30px;
     font-weight: 700;

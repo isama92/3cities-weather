@@ -31,7 +31,7 @@ const Cities = () => {
     return (
         <div className={classes.Container}>
             {placeholders}
-            {citiesEls}
+            {citiesEls.reverse()}
         </div>
     );
 };

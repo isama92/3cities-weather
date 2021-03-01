@@ -4,6 +4,8 @@ import { format as formatDate } from 'date-fns';
 import WeatherIcon from 'react-open-weather-icons';
 import classes from './Cities.module.css';
 
+// TODO: add delete button
+// TODO: on click set active city
 const City = ({ name, icon, degrees, date }) => (
     <div className={classes.City}>
         <div>
