@@ -11,7 +11,8 @@ export const getWeatherByCity = (city) => {
                 axios.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts`)
                     .then((onecall) => {
                         resolve({
-                            city: weather.name,
+                            id: weather.id,
+                            name: weather.name,
                             current: {
                                 date: fromUnixTime(onecall.current.dt),
                                 degrees: onecall.current.temp,

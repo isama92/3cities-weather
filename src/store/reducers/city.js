@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const saveCitiesToStorage = (cities) => {
-    const storageCities = cities.map((city) => city.city);
+    const storageCities = cities.map((city) => city.name);
     // TODO: remove console.log
     // eslint-disable-next-line no-console
     console.log('city names for storage:', storageCities);

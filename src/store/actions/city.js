@@ -13,14 +13,28 @@ export const bootstrap = () => (dispatch) => {
         });
 };
 
-export const addCity = (city) => (dispatch) => {
+export const addCity = (city) => (dispatch, getState) => {
     getWeatherByCity(city)
         .then((res) => {
+            if (res === null) return;
+            const citiesIds = getState().city.cities.map((c) => c.id);
+            if (citiesIds.indexOf(city.id) !== -1) return;
             dispatch({
                 type: actionTypes.ADD_CITY,
                 city: res,
             });
         });
+};
+
+export const addActiveCity = () => (dispatch, getState) => {
+    const cityState = getState().city;
+    const { active, cities } = cityState;
+    const citiesIds = cities.map((c) => c.id);
+    if (citiesIds.indexOf(active.id) !== -1) return;
+    dispatch({
+        type: actionTypes.ADD_CITY,
+        city: active,
+    });
 };
 
 export const removeCity = (cityIndex) => (dispatch) => {

@@ -1,6 +1,7 @@
 export {
     bootstrap,
     addCity,
+    addActiveCity,
     removeCity,
     setActiveByCityName,
     setActiveByCityIndex,

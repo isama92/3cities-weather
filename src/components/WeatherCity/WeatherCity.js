@@ -17,7 +17,7 @@ const weatherCity = () => {
                             <WeatherTemperature degrees={city.current.degrees} icon={city.current.icon} />
                         </div>
                         <div className={classes.Text}>
-                            <div className={classes.City}>{city.city}</div>
+                            <div className={classes.City}>{city.name}</div>
                             <div className={classes.Date}>{formatDate(city.current.date, 'EEEE do, MMMM')}</div>
                             <div className={classes.Weather}>{city.current.label}</div>
                         </div>
