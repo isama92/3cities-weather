@@ -7,8 +7,7 @@
 
 .Gradient {
     /* gradient over multiple div, to see it better just replace linear gradient params to (black, white) */
-    background: linear-gradient(0deg, rgba(96, 189, 236, 1) 0%, rgba(111, 171, 242, 1) 100%) no-repeat fixed center;
-    /*background: linear-gradient(black,white) no-repeat fixed center;*/
+    background: linear-gradient(180deg, rgba(5,69,150,1) 0%, rgba(91,180,255,1) 100%) no-repeat fixed center;
     background-size: cover;
 }
 

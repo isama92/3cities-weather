@@ -75,9 +75,7 @@ const weeklyMonthlyWeather = () => {
                 </div>
             </div>
             <div className={[classes.Blocks, classes.Gradient].join(' ')}>
-                <div>
-                    {activePage}
-                </div>
+                {activePage}
             </div>
         </div>
     );

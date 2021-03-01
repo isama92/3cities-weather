@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'react-bootstrap';
+import { useSwipeable } from 'react-swipeable';
 import Loading from 'components/Loading/Loading';
 import WeatherTemperature from 'components/WeatherTemperature/WeatherTemperature';
 import PageSwitcher from 'components/PageSwitcher/PageSwitcher';
@@ -11,8 +12,25 @@ const PER_PAGE = 3;
 const weeklyWeather = ({ weekPages }) => {
     const [activeWeekPage, setActiveWeekPage] = useState(0);
 
+    const prevPage = () => {
+        const newPage = activeWeekPage - 1;
+        if (newPage < 0) return;
+        setActiveWeekPage(newPage);
+    };
+
+    const nextPage = () => {
+        const newPage = activeWeekPage + 1;
+        if (newPage >= weekPages.length) return;
+        setActiveWeekPage(newPage);
+    };
+
+    const swipeHandlers = useSwipeable({
+        onSwipedRight: prevPage,
+        onSwipedLeft: nextPage,
+    });
+
     return (
-        <>
+        <div {...swipeHandlers}>
             <Row>
                 {
                     weekPages.length ? (
@@ -46,7 +64,7 @@ const weeklyWeather = ({ weekPages }) => {
                     />
                 </Col>
             </Row>
-        </>
+        </div>
     );
 };
 
