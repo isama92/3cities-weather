@@ -4,7 +4,7 @@ export {
     addActiveCity,
     removeCity,
     setActiveByCityName,
-    setActiveByCityIndex,
+    setActiveByCityId,
     addGeolocation,
     removeGeolocation,
 } from './city';

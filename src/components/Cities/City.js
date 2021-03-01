@@ -5,9 +5,16 @@ import WeatherIcon from 'react-open-weather-icons';
 import classes from './Cities.module.css';
 
 // TODO: add delete button
-// TODO: on click set active city
-const City = ({ name, icon, degrees, date }) => (
-    <div className={classes.City}>
+
+const City = ({ name, icon, degrees, date, onClick }) => (
+    <div
+      className={classes.City}
+      onClick={onClick}
+      onKeyPress={onClick}
+      role="button"
+      tabIndex="0"
+      aria-label="Set as active city"
+    >
         <div>
             <div className={classes.CityName}>{name}</div>
             <div className={classes.CityDate}>{formatDate(date, 'EEEE do, MMMM')}</div>
@@ -23,6 +30,7 @@ City.propTypes = {
     icon: PropTypes.string.isRequired,
     degrees: PropTypes.number.isRequired,
     date: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default City;

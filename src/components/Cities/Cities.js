@@ -12,6 +12,16 @@ const Cities = () => {
 
     const dispatch = useDispatch();
     const cities = useSelector((state) => state.city.cities);
+
+    const setActiveCity = (cityId) => {
+        console.log(cityId);
+        dispatch(actions.setActiveByCityId(cityId));
+    };
+
+    const addActiveCity = () => {
+        dispatch(actions.addActiveCity());
+    };
+
     const citiesEls = cities.map((city) => (
         <City
           key={city.id}
@@ -19,12 +29,9 @@ const Cities = () => {
           icon={city.current.icon}
           degrees={city.current.degrees}
           date={city.current.date}
+          onClick={() => setActiveCity(city.id)}
         />
     ));
-
-    const addActiveCity = () => {
-        dispatch(actions.addActiveCity());
-    };
 
     // eslint-disable-next-line react/no-array-index-key
     const placeholders = [...Array(SHOWN - cities.length)].map((el, i) => <Placeholder key={i} onClick={addActiveCity} />);

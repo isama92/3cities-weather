@@ -54,8 +54,8 @@ export const setActiveByCityName = (city) => (dispatch) => {
         });
 };
 
-export const setActiveByCityIndex = (cityIndex) => (dispatch, getState) => {
-    const city = getState().city.cities[cityIndex] || null;
+export const setActiveByCityId = (cityId) => (dispatch, getState) => {
+    const city = getState().city.cities.find((c) => c.id === cityId);
     dispatch({
         type: actionTypes.SET_ACTIVE,
         city,

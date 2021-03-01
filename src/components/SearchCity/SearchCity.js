@@ -12,7 +12,6 @@ const searchCity = () => {
     const onSearch = () => {
         if (typeof search !== 'string' || search.trim().length === 0) return;
         // TODO: block submit until search is complete
-        console.log(search);
         dispatch(actions.setActiveByCityName(search));
         setSearch('');
     };
