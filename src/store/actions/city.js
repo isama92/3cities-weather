@@ -1,9 +1,9 @@
 import { getCities } from 'shared/helpers/storage';
-import { getWeatherByCity } from 'shared/api/api';
+import { getWeatherByCityId, getWeatherByCity } from 'shared/api/api';
 import * as actionTypes from '../actionTypes';
 
 export const bootstrap = () => (dispatch) => {
-    const promises = getCities().map((city) => getWeatherByCity(city));
+    const promises = getCities().map((cityId) => getWeatherByCityId(cityId));
     Promise.all(promises)
         .then((cities) => {
             dispatch({
