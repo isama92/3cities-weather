@@ -1,0 +1,64 @@
+.Container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Gradient {
+    /* gradient over multiple div, to see it better just replace linear gradient params to (black, white) */
+    background: linear-gradient(0deg, rgba(96, 189, 236, 1) 0%, rgba(111, 171, 242, 1) 100%) no-repeat fixed center;
+    /*background: linear-gradient(black,white) no-repeat fixed center;*/
+    background-size: cover;
+}
+
+.PagesContainer {
+    max-width: 100%;
+}
+
+.Pages {
+    display: flex;
+    margin-bottom: -25px;
+    border-radius: var(--component-radius);
+    background-color: #FFF;
+    width: 100%;
+}
+
+.Page {
+    font-size: 27px;
+    font-weight: 700;
+    border-top-left-radius: var(--component-radius);
+    border-top-right-radius: var(--component-radius);
+    outline: none;
+    border: none;
+}
+
+.PageActive {
+    z-index: 5;
+    color: #FFF;
+/*rgba(96,189,236,1) 0%, rgba(111,171,242,1)*/
+}
+
+.Page:not(.PageActive) {
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.Page:last-child {
+    box-shadow: var(--component-shadow);
+}
+
+.PageText {
+    padding: 12px 35px 37px 35px;
+}
+
+.Blocks {
+    z-index: 10;
+    border-radius: var(--component-radius);
+    flex-grow: 1;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

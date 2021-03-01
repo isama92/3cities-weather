@@ -20,13 +20,13 @@ const getClient = () => {
     const client = axios.create(options);
 
     client.interceptors.request.use(
-        requestConfig => requestConfig,
-        requestError => Promise.reject(requestError),
+        (requestConfig) => requestConfig,
+        (requestError) => Promise.reject(requestError),
     );
 
     client.interceptors.response.use(
-        response => response.data,
-        error => error,
+        (response) => response.data,
+        (error) => error,
     );
 
     return client;

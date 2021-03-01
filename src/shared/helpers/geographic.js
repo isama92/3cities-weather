@@ -15,7 +15,7 @@ const map = {
     'washington dc': us,
 };
 
-export const getCountryByCity = city => {
+export const getCountryByCity = (city) => {
     if (typeof city !== 'string') return defaultCountry;
     return map[city.toLowerCase()] || defaultCountry;
 };

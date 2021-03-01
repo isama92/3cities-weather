@@ -1,8 +1,8 @@
 .Container {
     background: linear-gradient(5deg, rgba(203,229,255,1) 0%, rgba(106,194,251,1) 100%);
-    margin: 10px 0;
+    margin: 15px 0;
     border-radius: var(--component-radius);
-    min-height: 400px;
+    height: 400px;
     position: relative;
     box-shadow: var(--component-shadow);
 }

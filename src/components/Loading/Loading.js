@@ -4,7 +4,7 @@ import classes from './Loading.module.css';
 
 const loading = () => (
     <div className={classes.Container}>
-        <Spinner animation="grow" variant="light" />
+        <Spinner animation="border" variant="light" />
     </div>
 );
 

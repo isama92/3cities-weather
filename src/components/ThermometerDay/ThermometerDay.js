@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { format as formatDate } from 'date-fns';
+import { format as formatDate, getTime } from 'date-fns';
 import Loading from 'components/Loading/Loading';
 import classes from './ThermometerDay.module.css';
 
@@ -14,7 +14,7 @@ const thermometerDay = () => {
                 {
                     city !== null ? (
                         <div>
-                            {city.hourly.map((f) => <div>{formatDate(f.date, 'h aaaa')}</div>)}
+                            {city.hourly.map((f) => <div key={getTime(f.date)}>{formatDate(f.date, 'h aaaa')}</div>)}
                         </div>
                     ) : (
                         <Loading />

@@ -12,6 +12,10 @@
     box-shadow: var(--component-shadow);
 }
 
+.AllCornersRadius {
+    border-radius: var(--component-radius);
+}
+
 .Weekday {
     font-size: 24px;
     font-weight: 500;

@@ -1,0 +1,10 @@
+.WeekBlock {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.Switch {
+    display: flex;
+    justify-content: center;
+}

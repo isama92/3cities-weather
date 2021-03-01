@@ -1,9 +1,11 @@
 .Container {
-    margin: 10px 10px 10px 0;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .Title {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 15px;
     padding-left: 10px;
@@ -13,6 +15,12 @@
     box-shadow: var(--component-shadow);
     background: linear-gradient(0deg, rgba(96,189,236,1) 0%, rgba(111,171,242,1) 100%);
     border-radius: var(--component-radius);
-    height: 400px;
+    flex-grow: 1;
     overflow: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .Container {
+        margin-bottom: 30px;
+    }
 }

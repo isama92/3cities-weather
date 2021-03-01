@@ -3,10 +3,12 @@
 html {
   --component-shadow: 8px 10px 25px -9px rgba(0,0,0,0.35);
   --component-radius: 25px;
+  --background: #F1F1F1;
 }
 
 body {
   margin: 0;
+  background-color: var(--background);
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

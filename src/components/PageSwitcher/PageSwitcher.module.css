@@ -1,0 +1,33 @@
+.Dots {
+    display: flex;
+    align-items: center;
+}
+
+.Dot {
+    width: 7px;
+    height: 7px;
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    transition: width, height, background-color .2s ease-in-out;
+    outline: none;
+}
+
+.Dot:not(.Active) {
+    cursor: pointer;
+}
+
+.Dot:not(.Active):hover {
+    background-color: rgba(255, 255, 255, .65);
+    width: 9px;
+    height: 9px;
+}
+
+.Dot:not(:first-child) {
+    margin-left: 8px;
+}
+
+.Dot.Active {
+    width: 11px;
+    height: 11px;
+    background-color: #FFF;
+}
