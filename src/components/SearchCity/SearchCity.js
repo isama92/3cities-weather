@@ -1,8 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import * as actions from 'store/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import classes from './SearchCity.module.css';
 
-const searchCity = () => (
-    <div className={classes.Container}>Search City</div>
-);
+const searchCity = () => {
+    const dispatch = useDispatch();
+    const [search, setSearch] = useState('');
+
+    const onSearch = () => {
+        if (typeof search !== 'string' || search.trim().length === 0) return;
+        // TODO: block submit until search is complete
+        console.log(search);
+        dispatch(actions.setActiveByCityName(search));
+        setSearch('');
+    };
+
+    const onInputEnter = (e) => {
+        if (e.which !== 13) return;
+        onSearch();
+    };
+
+    return (
+        <div className={classes.Container}>
+            <div className={classes.Title}>Search</div>
+            <div className={classes.InputContainer}>
+                <input
+                  type="text"
+                  placeholder="ex: Miami"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className={classes.Input}
+                  onKeyPress={onInputEnter}
+                />
+                <div
+                  className={classes.InputIcon}
+                  onClick={onSearch}
+                  onKeyPress={onSearch}
+                  role="button"
+                  tabIndex="0"
+                >
+                    <FontAwesomeIcon icon={faSearch} />
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default searchCity;

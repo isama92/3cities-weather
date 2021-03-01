@@ -1,3 +1,47 @@
 .Container {
+    padding: 30px 0;
+}
 
+.Title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.InputContainer {
+    position: relative;
+}
+
+.Input {
+    height: 140px;
+    width: calc(100% - 5px);
+    box-shadow: var(--component-shadow);
+    border: none;
+    outline: none;
+    border-radius: var(--component-radius);
+    padding: 30px 60px 30px 30px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.Input::placeholder {
+    color: #BBB;
+}
+
+.InputIcon {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    width: 65px;
+    background: linear-gradient(0deg, rgba(96,189,236,1) 0%, rgba(111,171,242,1) 100%);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #FFF;
+    cursor: pointer;
 }
