@@ -26,7 +26,7 @@ const getClient = () => {
 
     client.interceptors.response.use(
         (response) => response.data,
-        (error) => error,
+        (error) => Promise.reject(error),
     );
 
     return client;

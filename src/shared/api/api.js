@@ -3,9 +3,6 @@ import axios from 'shared/api/axios';
 import { getCountryByCity } from 'shared/helpers/geographic';
 
 const weatherOneCallByCoords = (cityId, cityName, coords) => new Promise((resolve) => {
-    if (typeof coords === 'undefined') {
-        resolve(null);
-    }
     const { lat, lon } = coords;
     axios.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts`)
         .then((onecall) => {
@@ -46,6 +43,7 @@ const weatherOneCallByCoords = (cityId, cityName, coords) => new Promise((resolv
         }).catch((err) => {
             // eslint-disable-next-line no-console
             console.error(err);
+            alert('city not found');
             resolve(null);
         });
 });
@@ -58,11 +56,12 @@ export const getWeatherByCityId = (cityId) => new Promise((resolve) => {
         }).catch((err) => {
             // eslint-disable-next-line no-console
             console.error(err);
+            alert('city not found');
             resolve(null);
         });
 });
 
-export const getWeatherByCity = (cityName) => {
+export const getWeatherByCityName = (cityName) => {
     const countryCode = getCountryByCity(cityName);
     return new Promise((resolve) => {
         axios.get(`/weather?q=${cityName},${countryCode}`)
@@ -72,6 +71,7 @@ export const getWeatherByCity = (cityName) => {
             }).catch((err) => {
                 // eslint-disable-next-line no-console
                 console.error(err);
+                alert('city not found');
                 resolve(null);
             });
     });
@@ -85,6 +85,7 @@ export const getWeatherByCoords = (lat, lon) => new Promise((resolve) => {
         }).catch((err) => {
             // eslint-disable-next-line no-console
             console.error(err);
+            alert('city not found');
             resolve(null);
         });
 });

@@ -1,5 +1,5 @@
 import { getCities, getGeolocation } from 'shared/helpers/storage';
-import { getWeatherByCityId, getWeatherByCity, getWeatherByCoords } from 'shared/api/api';
+import { getWeatherByCityId, getWeatherByCityName, getWeatherByCoords } from 'shared/api/api';
 import * as actionTypes from '../actionTypes';
 
 const dispatchBootstrap = (dispatch, cities, geolocation = null) => {
@@ -27,7 +27,7 @@ export const bootstrap = () => (dispatch) => {
 };
 
 export const addCity = (city) => (dispatch, getState) => {
-    getWeatherByCity(city)
+    getWeatherByCityName(city)
         .then((res) => {
             if (res === null) return;
             const citiesIds = getState().city.cities.map((c) => c.id);
@@ -62,7 +62,7 @@ export const setActiveByCityName = (city) => (dispatch) => {
     dispatch({
         type: actionTypes.SEARCHING,
     });
-    getWeatherByCity(city)
+    getWeatherByCityName(city)
         .then((res) => {
             dispatch({
                 type: actionTypes.SET_ACTIVE,
@@ -98,6 +98,13 @@ export const addGeolocation = () => (dispatch) => {
                     geolocation: res,
                 });
             });
+    }, (err) => {
+        console.error(err);
+        alert('geolocation failed');
+    }, {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
     });
 };
 

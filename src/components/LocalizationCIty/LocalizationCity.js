@@ -9,6 +9,8 @@ import classes from './LocalizationCity.module.css';
 // TODO: card component with bg customizable
 
 const localizationCity = () => {
+    if (!navigator.geolocation) return null;
+
     const dispatch = useDispatch();
     const geolocation = useSelector((state) => state.city.geolocation);
     const active = useSelector((state) => state.city.active);

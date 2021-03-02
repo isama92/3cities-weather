@@ -1,8 +1,6 @@
 .Container {
     padding: 30px 0;
     max-width: 1400px;
-    /* overwrite bootstrap margin left auto */
-    margin-left: 0!important;
 }
 
 .RowMarginLeftOverride {
