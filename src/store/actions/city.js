@@ -15,13 +15,14 @@ export const bootstrap = () => (dispatch) => {
     const promises = getCities().map((cityId) => getWeatherByCityId(cityId));
     Promise.all(promises)
         .then((cities) => {
+            const filteredCities = cities.filter((c) => c !== null);
             if (geolocationCityId !== null) {
                 getWeatherByCityId(geolocationCityId)
                     .then((geolocation) => {
-                        dispatchBootstrap(dispatch, cities, geolocation);
+                        dispatchBootstrap(dispatch, filteredCities, geolocation);
                     });
             } else {
-                dispatchBootstrap(dispatch, cities);
+                dispatchBootstrap(dispatch, filteredCities);
             }
         });
 };
@@ -102,6 +103,7 @@ export const addGeolocation = () => (dispatch) => {
                 });
             });
     }, (err) => {
+        // eslint-disable-next-line no-console
         console.error(err);
         alert('geolocation failed');
     }, {
