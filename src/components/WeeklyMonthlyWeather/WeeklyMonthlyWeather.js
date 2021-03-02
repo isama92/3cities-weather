@@ -4,6 +4,7 @@ import { format as formatDate } from 'date-fns';
 import { chunk } from 'lodash';
 import Loading from 'components/Loading/Loading';
 import WeeklyWeather from './WeeklyWeather/WeeklyWeather';
+import MonthlyWeather from './MonthlyWeather/MonthlyWeather';
 import classes from './WeeklyMonthlyWeather.module.css';
 
 const PAGE_WEEK = 'WEEK';
@@ -42,14 +43,16 @@ const weeklyMonthlyWeather = () => {
     }
 
     let activePage = null;
-    switch (page) {
-        default:
-        case PAGE_WEEK:
-            activePage = <WeeklyWeather weekPages={weekPages} />;
-            break;
-        case PAGE_MONTH:
-            activePage = <div>month</div>;
-            break;
+    if (city !== null) {
+        switch (page) {
+            default:
+            case PAGE_WEEK:
+                activePage = <WeeklyWeather weekPages={weekPages} />;
+                break;
+            case PAGE_MONTH:
+                activePage = <MonthlyWeather monthly={city.monthly} />;
+                break;
+        }
     }
 
     return (

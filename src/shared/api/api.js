@@ -9,6 +9,7 @@ const weatherOneCallByCoords = (cityId, cityName, coords) => new Promise((resolv
     const { lat, lon } = coords;
     axios.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts`)
         .then((onecall) => {
+            const monthly = onecall.daily[0];
             resolve({
                 id: cityId,
                 name: cityName,
@@ -30,6 +31,17 @@ const weatherOneCallByCoords = (cityId, cityName, coords) => new Promise((resolv
                     label: d.weather[0].main,
                     icon: d.weather[0].icon,
                 })),
+                monthly: {
+                    date: fromUnixTime(monthly.dt),
+                    label: monthly.weather[0].main,
+                    icon: monthly.weather[0].icon,
+                    degrees_avg: monthly.temp.day,
+                    degrees_min: monthly.temp.min,
+                    degrees_max: monthly.temp.max,
+                    humidity: monthly.humidity,
+                    uvi: monthly.uvi,
+                    dew_point: monthly.dew_point,
+                },
             });
         }).catch((err) => {
             // eslint-disable-next-line no-console
