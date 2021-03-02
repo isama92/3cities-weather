@@ -1,15 +1,30 @@
-import { getCities } from 'shared/helpers/storage';
+import { getCities, getGeolocation } from 'shared/helpers/storage';
 import { getWeatherByCityId, getWeatherByCity, getWeatherByCoords } from 'shared/api/api';
 import * as actionTypes from '../actionTypes';
 
+const dispatchBootstrap = (dispatch, cities, geolocation = null) => {
+    dispatch({
+        type: actionTypes.BOOTSTRAP,
+        cities,
+        geolocation,
+    });
+};
+
 export const bootstrap = () => (dispatch) => {
+    const geolocationCityId = getGeolocation();
     const promises = getCities().map((cityId) => getWeatherByCityId(cityId));
+    console.log(geolocationCityId);
     Promise.all(promises)
         .then((cities) => {
-            dispatch({
-                type: actionTypes.BOOTSTRAP,
-                cities,
-            });
+            if (geolocationCityId !== null) {
+                getWeatherByCityId(geolocationCityId)
+                    .then((geolocation) => {
+                        console.log(geolocation);
+                        dispatchBootstrap(dispatch, cities, geolocation);
+                    });
+            } else {
+                dispatchBootstrap(dispatch, cities);
+            }
         });
 };
 

@@ -1,4 +1,4 @@
-import { setCities } from 'shared/helpers/storage';
+import { setCities, setGeolocation as setGeolocationToStorage } from 'shared/helpers/storage';
 import * as actionTypes from '../actionTypes';
 
 const initialState = {
@@ -9,13 +9,15 @@ const initialState = {
 
 const saveCitiesToStorage = (cities) => {
     const storageCities = cities.map((city) => city.id);
-    // TODO: remove console.log
-    // eslint-disable-next-line no-console
-    console.log('city ids for storage:', storageCities);
     setCities(storageCities);
 };
 
-const bootstrap = (state, action) => ({ ...state, cities: action.cities, active: action.cities[0] || null });
+const bootstrap = (state, action) => ({
+    ...state,
+    cities: action.cities,
+    geolocation: action.geolocation,
+    active: action.cities[0] || null,
+});
 
 const addCity = (state, action) => {
     const cities = [...state.cities];
@@ -40,7 +42,10 @@ const removeCity = (state, action) => {
 
 const setActive = (state, action) => ({ ...state, active: action.city });
 
-const setGeolocation = (state, geolocation) => ({ ...state, geolocation });
+const setGeolocation = (state, geolocation) => {
+    setGeolocationToStorage(geolocation?.id || null);
+    return { ...state, geolocation };
+};
 const addGeolocation = (state, action) => setGeolocation(state, action.geolocation);
 const removeGeolocation = (state) => setGeolocation(state, null);
 
