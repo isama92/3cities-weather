@@ -22,7 +22,7 @@ const thermometerDay = () => {
         if (i !== hours.length - 1) {
             el.push(<div key={`${getTime(h.date)}line`} className={classes.Line} />);
         }
-        return <>{el}</>;
+        return <React.Fragment key={getTime(h.date)}>{el}</React.Fragment>;
     };
 
     const isVisible = (el) => {
