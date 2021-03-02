@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from 'store/actions';
 import Title from 'components/Title/Title';
 import classes from './SearchCity.module.css';
 
 const searchCity = () => {
     const dispatch = useDispatch();
+    const searching = useSelector((state) => state.city.searching);
     const [search, setSearch] = useState('');
 
     const onSearch = () => {
         if (typeof search !== 'string' || search.trim().length === 0) return;
-        // TODO: block submit until search is complete
         dispatch(actions.setActiveByCityName(search));
         setSearch('');
     };
@@ -33,6 +33,7 @@ const searchCity = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   className={classes.Input}
                   onKeyPress={onInputEnter}
+                  disabled={searching}
                 />
                 <div
                   className={classes.InputIcon}

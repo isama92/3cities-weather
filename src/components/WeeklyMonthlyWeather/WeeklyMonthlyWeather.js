@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { format as formatDate } from 'date-fns';
 import { chunk } from 'lodash';
+import Loading from 'components/Loading/Loading';
 import WeeklyWeather from './WeeklyWeather/WeeklyWeather';
 import classes from './WeeklyMonthlyWeather.module.css';
 
@@ -14,13 +15,14 @@ const weeklyMonthlyWeather = () => {
     const city = useSelector((state) => state.city.active);
 
     useEffect(() => {
-        if (city === null) return;
-        const wps = city.daily.map((d) => ({
-            weekday: formatDate(d.date, 'EEEE'),
-            icon: d.icon,
-            degrees: d.degrees,
-        }));
-        setWeekPages(chunk(wps, 3));
+        if (city !== null) {
+            const wps = city.daily.map((d) => ({
+                weekday: formatDate(d.date, 'EEEE'),
+                icon: d.icon,
+                degrees: d.degrees,
+            }));
+            setWeekPages(chunk(wps, 3));
+        }
     }, [city]);
 
     const setPage = (p) => {
@@ -75,7 +77,7 @@ const weeklyMonthlyWeather = () => {
                 </div>
             </div>
             <div className={[classes.Blocks, classes.Gradient].join(' ')}>
-                {activePage}
+                {city !== null ? activePage : <Loading />}
             </div>
         </div>
     );

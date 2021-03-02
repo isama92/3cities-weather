@@ -10,7 +10,7 @@ import classes from './City.module.css';
 const City = ({ id, name, icon, degrees, date, onClick, onRemove }) => {
     const active = useSelector((state) => state.city.active);
     const cl = [classes.City];
-    if (id === active.id) cl.push(classes.Active);
+    if (id === active?.id) cl.push(classes.Active);
 
     const canRemove = typeof onRemove === 'function';
 

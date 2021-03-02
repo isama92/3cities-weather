@@ -59,6 +59,9 @@ export const removeCity = (cityId) => (dispatch) => {
 };
 
 export const setActiveByCityName = (city) => (dispatch) => {
+    dispatch({
+        type: actionTypes.SEARCHING,
+    });
     getWeatherByCity(city)
         .then((res) => {
             dispatch({
