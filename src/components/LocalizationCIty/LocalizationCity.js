@@ -17,6 +17,10 @@ const localizationCity = () => {
         dispatch(actions.addGeolocation());
     };
 
+    const removeGeolocation = () => {
+        dispatch(actions.removeGeolocation());
+    };
+
     const setActiveCity = () => {
         if (geolocation.id === active.id) return;
         dispatch(actions.setGeolocationAsActive());
@@ -36,6 +40,7 @@ const localizationCity = () => {
                       degrees={geolocation.current.degrees}
                       date={geolocation.current.date}
                       onClick={() => setActiveCity()}
+                      onRemove={removeGeolocation}
                     />
                 )
             }
