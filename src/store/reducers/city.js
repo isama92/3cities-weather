@@ -33,7 +33,7 @@ const removeCity = (state, action) => {
     const cities = [...state.cities];
     const { cityId } = action;
     const cityIndex = cities.findIndex((c) => c.id === cityId);
-    cities.splice(1, cityIndex);
+    cities.splice(cityIndex, 1);
     saveCitiesToStorage(cities);
     return { ...state, cities };
 };
