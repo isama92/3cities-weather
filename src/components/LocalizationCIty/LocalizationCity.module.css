@@ -16,3 +16,9 @@
     color: #FFF;
     cursor: pointer;
 }
+
+.LocalizationButton.Disabled {
+    background: #EEE;
+    color: #999;
+    cursor: not-allowed;
+}

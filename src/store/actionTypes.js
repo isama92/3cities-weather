@@ -5,3 +5,4 @@ export const SET_ACTIVE = 'SET_ACTIVE';
 export const GEOLOCATE = 'GEOLOCATE';
 export const GEOLOCATION_REMOVE = 'GEOLOCATION_REMOVE';
 export const SEARCHING = 'SEARCHING';
+export const GEOLOCATING = 'GEOLOCATING';

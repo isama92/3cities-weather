@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from 'store/actions';
 import CityAdd from 'components/CityAdd/CityAdd';
 import City from 'components/City/City';
+import Loading from 'components/Loading/Loading';
 import classes from './Cities.module.css';
 
 const SHOWN = 3;
 
 const Cities = () => {
-    // TODO: loading until bootstrapped
-
     const dispatch = useDispatch();
+    const bootstrapped = useSelector((state) => state.city.started);
     const cities = useSelector((state) => state.city.cities);
     const active = useSelector((state) => state.city.active);
 
@@ -42,8 +42,15 @@ const Cities = () => {
 
     return (
         <div className={classes.Container}>
-            {cities.length < SHOWN ? (<CityAdd onClick={addActiveCity} />) : null}
-            {citiesEls.reverse()}
+            {
+                bootstrapped ? (
+                    <>
+                        {cities.length < SHOWN ? (<CityAdd onClick={addActiveCity} />) : null}
+                        {citiesEls.reverse()}
+                    </>
+                ) : (<Loading variant="dark" />)
+            }
+
         </div>
     );
 };

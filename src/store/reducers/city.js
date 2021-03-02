@@ -6,6 +6,8 @@ const initialState = {
     active: null,
     geolocation: null,
     searching: false,
+    geolocating: false,
+    started: false,
 };
 
 const saveCitiesToStorage = (cities) => {
@@ -18,6 +20,7 @@ const bootstrap = (state, action) => ({
     cities: action.cities,
     geolocation: action.geolocation,
     active: action.cities[0] || null,
+    started: true,
 });
 
 const addCity = (state, action) => {
@@ -45,12 +48,13 @@ const setActive = (state, action) => ({ ...state, active: action.city, searching
 
 const setGeolocation = (state, geolocation) => {
     setGeolocationToStorage(geolocation?.id || null);
-    return { ...state, geolocation };
+    return { ...state, geolocation, geolocating: false };
 };
 const addGeolocation = (state, action) => setGeolocation(state, action.geolocation);
 const removeGeolocation = (state) => setGeolocation(state, null);
 
 const searching = (state) => ({ ...state, searching: true });
+const geolocating = (state) => ({ ...state, geolocating: true });
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -70,6 +74,8 @@ const reducer = (state = initialState, action) => {
             return removeGeolocation(state);
         case actionTypes.SEARCHING:
             return searching(state);
+        case actionTypes.GEOLOCATING:
+            return geolocating(state);
     }
 };
 

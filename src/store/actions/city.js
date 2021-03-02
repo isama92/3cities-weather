@@ -90,6 +90,9 @@ export const setGeolocationAsActive = () => (dispatch, getState) => {
 };
 
 export const addGeolocation = () => (dispatch) => {
+    dispatch({
+        type: actionTypes.GEOLOCATING,
+    });
     navigator.geolocation.getCurrentPosition((position) => {
         getWeatherByCoords(position.coords.latitude, position.coords.longitude)
             .then((res) => {
