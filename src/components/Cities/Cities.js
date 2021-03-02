@@ -40,11 +40,9 @@ const Cities = () => {
         />
     ));
 
-    // eslint-disable-next-line react/no-array-index-key
-    const cityAdds = [...Array(SHOWN - cities.length)].map((el, i) => <CityAdd key={i} onClick={addActiveCity} />);
     return (
         <div className={classes.Container}>
-            {cityAdds}
+            {cities.length < SHOWN ? (<CityAdd onClick={addActiveCity} />) : null}
             {citiesEls.reverse()}
         </div>
     );

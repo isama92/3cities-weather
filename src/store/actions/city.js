@@ -29,6 +29,7 @@ export const addCity = (city) => (dispatch, getState) => {
 export const addActiveCity = () => (dispatch, getState) => {
     const cityState = getState().city;
     const { active, cities } = cityState;
+    if (active === null) return;
     const citiesIds = cities.map((c) => c.id);
     if (citiesIds.indexOf(active.id) !== -1) return;
     dispatch({
