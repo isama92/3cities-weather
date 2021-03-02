@@ -12,6 +12,77 @@
     overflow: auto;
 }
 
+.Thermometer {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFF;
+}
+
+.ThermometerHeader {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.ThermometerBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Circle {
+    position: relative;
+    width: 23px;
+    height: 23px;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+
+.Degrees {
+    position: absolute;
+    font-size: 27px;
+    top: 50%;
+    left: -75px;
+    transform: translateY(-50%);
+    width: 60px;
+    text-align: center;
+}
+
+.Time {
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    right: -90px;
+    transform: translateY(-50%);
+    text-align: left;
+    width: 70px;
+}
+
+.Circle:first-child {
+    width: 35px;
+    height: 35px;
+}
+
+.Circle:first-child .Degrees {
+    left: -68px;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.Circle:first-child .Time {
+    opacity: 0;
+}
+
+.Line {
+    width: 8px;
+    height: 70px;
+    background: #FFF;
+    margin: -3px 0 -3px 0;
+}
+
 @media screen and (max-width: 1200px) {
     .Container {
         margin-bottom: 30px;

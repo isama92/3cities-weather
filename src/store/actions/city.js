@@ -13,13 +13,11 @@ const dispatchBootstrap = (dispatch, cities, geolocation = null) => {
 export const bootstrap = () => (dispatch) => {
     const geolocationCityId = getGeolocation();
     const promises = getCities().map((cityId) => getWeatherByCityId(cityId));
-    console.log(geolocationCityId);
     Promise.all(promises)
         .then((cities) => {
             if (geolocationCityId !== null) {
                 getWeatherByCityId(geolocationCityId)
                     .then((geolocation) => {
-                        console.log(geolocation);
                         dispatchBootstrap(dispatch, cities, geolocation);
                     });
             } else {
