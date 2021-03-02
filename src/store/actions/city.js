@@ -1,5 +1,5 @@
 import { getCities } from 'shared/helpers/storage';
-import { getWeatherByCityId, getWeatherByCity } from 'shared/api/api';
+import { getWeatherByCityId, getWeatherByCity, getWeatherByCoords } from 'shared/api/api';
 import * as actionTypes from '../actionTypes';
 
 export const bootstrap = () => (dispatch) => {
@@ -56,6 +56,16 @@ export const setActiveByCityName = (city) => (dispatch) => {
 
 export const setActiveByCityId = (cityId) => (dispatch, getState) => {
     const city = getState().city.cities.find((c) => c.id === cityId);
+    if (typeof city === 'undefined') return;
+    dispatch({
+        type: actionTypes.SET_ACTIVE,
+        city,
+    });
+};
+
+export const setGeolocationAsActive = () => (dispatch, getState) => {
+    const city = getState().city.geolocation;
+    if (city === null) return;
     dispatch({
         type: actionTypes.SET_ACTIVE,
         city,
@@ -63,13 +73,14 @@ export const setActiveByCityId = (cityId) => (dispatch, getState) => {
 };
 
 export const addGeolocation = () => (dispatch) => {
-    // TODO: geolocation
-    dispatch({
-        type: actionTypes.GEOLOCATE,
-        geolocation: {
-            x: 1,
-            y: 1,
-        },
+    navigator.geolocation.getCurrentPosition((position) => {
+        getWeatherByCoords(position.coords.latitude, position.coords.longitude)
+            .then((res) => {
+                dispatch({
+                    type: actionTypes.GEOLOCATE,
+                    geolocation: res,
+                });
+            });
     });
 };
 

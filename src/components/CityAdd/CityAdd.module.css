@@ -1,0 +1,18 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    padding: 20px 0;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.Container:hover {
+    color: #68B2EF;
+}
+
+.Container > *:first-child {
+    margin-right: 10px;
+}

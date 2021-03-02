@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import classes from './Cities.module.css';
+import classes from './CityAdd.module.css';
 
 const placeholder = ({ onClick }) => (
     <div
-      className={classes.Placeholder}
+      className={classes.Container}
       onClick={onClick}
       onKeyPress={onClick}
       role="button"

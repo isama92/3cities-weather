@@ -1,0 +1,44 @@
+.City {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(13,57,101,1) 0%, rgba(72,152,247,1) 100%);
+    box-shadow: var(--component-shadow);
+    border-radius: var(--component-radius);
+    padding: 20px;
+    color: #FFF;
+    outline: none;
+}
+
+.City.Active {
+    cursor: default;
+}
+.City:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.CityName {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.CityDate {
+    font-size: 15px;
+}
+
+.CityTime {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 4px;
+}
+
+.CityIcon {
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+}
+
+.CityDegrees {
+    font-size: 40px;
+    font-weight: 900;
+}

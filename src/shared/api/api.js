@@ -30,7 +30,7 @@ const weatherOneCallByCoords = (cityId, cityName, coords) => {
                     })),
                 });
             }).catch((err) => {
-            // eslint-disable-next-line no-console
+                // eslint-disable-next-line no-console
                 console.error(err);
                 resolve(null);
             });
@@ -63,3 +63,15 @@ export const getWeatherByCity = (cityName) => {
             });
     });
 };
+
+export const getWeatherByCoords = (lat, lon) => new Promise((resolve) => {
+    axios.get(`/weather?lat=${lat}&lon=${lon}`)
+        .then((weather) => {
+            weatherOneCallByCoords(weather.id, weather.name, weather.coord)
+                .then((oneCall) => resolve(oneCall));
+        }).catch((err) => {
+            // eslint-disable-next-line no-console
+            console.error(err);
+            resolve(null);
+        });
+});
