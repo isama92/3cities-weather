@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  weather_app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: weather_app
+    ports:
+      - 80:80
