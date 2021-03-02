@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { format as formatDate, getTime } from 'date-fns';
+import Title from 'components/Title/Title';
 import Loading from 'components/Loading/Loading';
 import classes from './ThermometerDay.module.css';
 
@@ -9,7 +10,7 @@ const thermometerDay = () => {
 
     return (
         <div className={classes.Container}>
-            <div className={classes.Title}>Today</div>
+            <Title>Today</Title>
             <div className={classes.Card}>
                 {
                     city !== null ? (

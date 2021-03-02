@@ -14,7 +14,6 @@ const Cities = () => {
     const cities = useSelector((state) => state.city.cities);
 
     const setActiveCity = (cityId) => {
-        console.log(cityId);
         dispatch(actions.setActiveByCityId(cityId));
     };
 

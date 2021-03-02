@@ -4,13 +4,6 @@
     flex-direction: column;
 }
 
-.Title {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    padding-left: 10px;
-}
-
 .Card {
     box-shadow: var(--component-shadow);
     background: linear-gradient(0deg, rgba(96,189,236,1) 0%, rgba(111,171,242,1) 100%);

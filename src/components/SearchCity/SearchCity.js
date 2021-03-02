@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import * as actions from 'store/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import * as actions from 'store/actions';
+import Title from 'components/Title/Title';
 import classes from './SearchCity.module.css';
 
 const searchCity = () => {
@@ -23,7 +24,7 @@ const searchCity = () => {
 
     return (
         <div className={classes.Container}>
-            <div className={classes.Title}>Search</div>
+            <Title>Search</Title>
             <div className={classes.InputContainer}>
                 <input
                   type="text"
