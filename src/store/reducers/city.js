@@ -31,7 +31,8 @@ const addCity = (state, action) => {
 
 const removeCity = (state, action) => {
     const cities = [...state.cities];
-    const { cityIndex } = action;
+    const { cityId } = action;
+    const cityIndex = cities.findIndex((c) => c.id === cityId);
     cities.splice(1, cityIndex);
     saveCitiesToStorage(cities);
     return { ...state, cities };

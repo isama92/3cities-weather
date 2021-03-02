@@ -23,6 +23,10 @@ const Cities = () => {
         dispatch(actions.addActiveCity());
     };
 
+    const removeCity = (cityId) => {
+        dispatch(actions.removeCity(cityId));
+    };
+
     const citiesEls = cities.map((city) => (
         <City
           key={city.id}
@@ -32,6 +36,7 @@ const Cities = () => {
           degrees={city.current.degrees}
           date={city.current.date}
           onClick={() => setActiveCity(city.id)}
+          onRemove={() => removeCity(city.id)}
         />
     ));
 

@@ -37,10 +37,10 @@ export const addActiveCity = () => (dispatch, getState) => {
     });
 };
 
-export const removeCity = (cityIndex) => (dispatch) => {
+export const removeCity = (cityId) => (dispatch) => {
     dispatch({
         type: actionTypes.REMOVE_CITY,
-        cityIndex,
+        cityId,
     });
 };
 
